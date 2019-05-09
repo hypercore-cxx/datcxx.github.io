@@ -1,0 +1,58 @@
+digraph G {
+
+  arraylru [label="array-lru"]
+  atomicbatcher [label="atomic-batcher"]
+  bitfieldrle [label="bitfield-rle"]
+  codecs [label="codecs"]
+  fastbitfield [label="fast-bitfield"]
+  flattree [label="flat-tree"]
+  hypercorecrypto [label="hypercore-crypto"]
+  hypercoreprotocol [label="hypercore-protocol"]
+  memorypager [label="memory-pager"]
+  merkletreestream [label="merkle-tree-stream"]
+  prettyhash [label="pretty-hash"]
+  randomaccessfile [label="random-access-file"]
+  libsodium [label="libsodium"]
+  sparsebitfield [label="sparse-bitfield"]
+  counttrailingzeros [label="count-trailing-zeros"]
+  sortedindexof [label="sorted-index-of"]
+  randomaccessstorage [label="random-access-storage"]
+  varint [label="varint"]
+  buffer [label="buffer"]
+  path [label="path"]
+  mkdirp [label="mkdirp"]
+    
+  Hypercore -> arraylru;
+  Hypercore -> atomicbatcher;
+  Hypercore -> bitfieldrle;
+  Hypercore -> codecs;
+  Hypercore -> fastbitfield;
+  Hypercore -> flattree;
+  Hypercore -> hypercorecrypto;
+  Hypercore -> hypercoreprotocol
+  Hypercore -> memorypager;
+  Hypercore -> merkletreestream;
+  Hypercore -> prettyhash;
+  Hypercore -> randomaccessfile;
+  Hypercore -> libsodium;
+  Hypercore -> sparsebitfield;
+  
+  bitfieldrle -> varint;
+  
+  fastbitfield -> counttrailingzeros;
+  
+  randomaccessfile -> randomaccessstorage;
+  randomaccessstorage -> libuv;
+  randomaccessstorage -> path;
+  randomaccessstorage -> mkdirp;
+  
+  sparsebitfield -> memorypager;
+  
+  memorypager -> buffer;
+  
+  merkletreestream -> flattree;
+  
+  hypercoreprotocol -> varint;
+  hypercoreprotocol -> libsodium;
+  hypercoreprotocol -> sortedindexof;
+}
