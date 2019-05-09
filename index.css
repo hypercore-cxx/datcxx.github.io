@@ -1,0 +1,68 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+}
+
+h2 {
+  padding-top: 50px;
+  display: block;
+}
+
+h1, h2, h3, h4 {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+h1, h2, h3, h4, code, pre {
+  font-family: 'Nanum Gothic Coding', monospace;
+}
+
+p {
+  margin: 0;
+  line-height: 1.8;
+}
+
+a, a:visited {
+  color: #999;
+  text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 1px solid white;
+}
+
+a.image-link {
+  border: none;
+}
+
+body {
+  background-color: #444;
+  margin: 0;
+}
+
+header {
+  padding: 100px 0;
+  text-align: center;
+  background-color: #fff;
+}
+
+main {
+  max-width: 800px;
+  color: white;
+  margin: 100px auto;
+}
+
+.topology {
+  max-width: 100%;
+}
+
+.row {
+  display: flex;
+}
+
+.half {
+  width: 50%;
+}
+
+.half, .full {
+  min-width: 500px;
+  padding-right: 20px;
+}
