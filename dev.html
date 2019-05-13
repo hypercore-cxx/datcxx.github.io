@@ -45,16 +45,16 @@
   <pre><code>
   $build -h
 
-    build v1.0.0
+    build v2.0.0
 
-    build [...args]             build the project
-    build add &lt;remote&gt; [hash]   add git dependency [at hash]
-    build h|help|-h             print this help screen
-    build i|install [dep]       recursively install dep(s)
-    build u|upgrade [dep]       recursively upgrade dep(s)
-    build init                  initialze a new project
-    build run &lt;name&gt;            run a sepecific script
-    build test                  run the test script
+    build [...args]                   build the project [with ...args]
+    build -h|help                     print this help screen
+    build -i|install [dep]            recursively install dep(s)
+    build -u|upgrade [dep]            recursively upgrade dep(s)
+    build add &lt;remote&gt; [hash] [-d]    add git dep [at commit] [as dev]
+    build init                        initialze a new project
+    build run &lt;name&gt;                  run a sepecific script
+    build test                        run the test script
   </code></pre>
 
   <p>
