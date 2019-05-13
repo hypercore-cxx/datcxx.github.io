@@ -60,6 +60,7 @@ main {
   max-width: 800px;
   color: white;
   margin: 100px auto;
+  padding: 6%;
 }
 
 nav {
@@ -67,6 +68,7 @@ nav {
   bottom: 0px;
   left: 50%;
   transform: translate(-50%, 0);
+  min-width: 400px;
 }
 
 nav a, nav a:visited {
@@ -91,6 +93,7 @@ code {
   background: #222;
   display: inline-block;
   padding: 2px 8px;
+  overflow: auto;
 }
 
 pre code {
@@ -114,6 +117,5 @@ pre code {
 }
 
 .half, .full {
-  min-width: 500px;
   padding-right: 20px;
 }
