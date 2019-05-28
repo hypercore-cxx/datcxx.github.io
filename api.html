@@ -1,4 +1,4 @@
-<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding:400,700|Open+Sans:400,800" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700|Open+Sans:400,800" rel="stylesheet">
 <link href="index.css" rel="stylesheet">
 
 <header>
@@ -14,7 +14,357 @@
   </nav>
 </header>
 
-<main>
-  <p>This is a work in progress. But the plan is to expose a small surface
-  area &mdash; only what is needed to use hypercore, hyperdrive, dat, etc.
+<main class="api">
+
+
+    <div class="toc">
+      <a href="Hyper::Util">Hyper::Util</a><ul>
+<li>Buffer&lt;T&gt;</li>
+<li>ctz</li>
+</ul>
+<a href="Hyper::Core::Memory">Hyper::Core::Memory</a><ul>
+<li>Page</li>
+<li>Pager</li>
+</ul>
+    </div>
+
+    <div class="docs">
+      <h1 id="hyperutil">Hyper::Util</h1>
+<h2 id="buffert">Buffer&lt;T&gt;</h2>
+<p>A class that provides some convenient methods for managing buffers.</p>
+<h3 id="operators">OPERATORS</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Operator</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">=</td>
+<td align="left">Assign one buffer to another.</td>
+</tr>
+<tr>
+<td align="left">==</td>
+<td align="left">Determine if two buffers values are equal.</td>
+</tr>
+<tr>
+<td align="left">!=</td>
+<td align="left">Determine if two buffers values are not equal.</td>
+</tr>
+<tr>
+<td align="left">&lt;&lt;</td>
+<td align="left">Allow buffers to interface with streams. The value of the buffer will be represented as hex in a angle-bracket delimited string.</td>
+</tr>
+<tr>
+<td align="left">[]</td>
+<td align="left">Provides access of the buffer via index.</td>
+</tr>
+</tbody></table>
+<h3 id="constructors">CONSTRUCTORS</h3>
+<p>Constructs a buffer from an initializer list.</p>
+<pre><code>Buffer&lt;T&gt;(initializer_list&lt;T&gt; list)</code></pre><table>
+<thead>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Default</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">list</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<p>Constructs an empty buffer.</p>
+<pre><code>Buffer&lt;T&gt;()</code></pre><p>Constructs a buffer with a value of <code>size</code>.</p>
+<pre><code>Buffer&lt;T&gt;(size_t size)</code></pre><table>
+<thead>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Default</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">size</td>
+<td align="left"></td>
+<td align="left">The size initially allocated for the buffer value.</td>
+</tr>
+</tbody></table>
+<p>Constructs a buffer from a string.</p>
+<pre><code>Buffer&lt;T&gt;(const string&amp; str)</code></pre><table>
+<thead>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Default</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">str</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<p>Constructs a buffer from another buffer.</p>
+<pre><code>Buffer&lt;T&gt;(const Buffer&amp; buf)</code></pre><table>
+<thead>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Default</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">buf</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<h3 id="methods">METHODS</h3>
+<h4 id="tostring">toString</h4>
+<p>Get the value of of the buffer as a string.</p>
+<pre><code>toString()</code></pre><table>
+<thead>
+<tr>
+<th align="left">Return Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">std::string</td>
+<td align="left">undefined</td>
+</tr>
+</tbody></table>
+<h4 id="length">length</h4>
+<p>Get the size of the buffer in by bytes.</p>
+<pre><code>length()</code></pre><table>
+<thead>
+<tr>
+<th align="left">Return Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">int</td>
+<td align="left">undefined</td>
+</tr>
+</tbody></table>
+<h4 id="concat">concat</h4>
+<p>Concatinate this buffer with a list of buffers.</p>
+<pre><code>concat(initializer_list&lt;T&gt;&amp; list)</code></pre><table>
+<thead>
+<tr>
+<th align="left">Return Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Buffer</td>
+<td align="left">Returns a new combined buffer.</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Default</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">list</td>
+<td align="left"></td>
+<td align="left">A list of buffers to be joined.</td>
+</tr>
+</tbody></table>
+<h4 id="copy">copy</h4>
+<p>Copies this buffer (or part of it) into another buffer.</p>
+<pre><code>copy(Buffer&amp; target, size_t targetStart, size_t sourceStart, size_t sourceEnd)</code></pre><table>
+<thead>
+<tr>
+<th align="left">Return Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">size_t</td>
+<td align="left">Returns how many bytes were written to this buffer.</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Default</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">target</td>
+<td align="left"></td>
+<td align="left">A Buffer to copy into.</td>
+</tr>
+<tr>
+<td align="left">targetStart</td>
+<td align="left"></td>
+<td align="left">The offset within target at which to begin writing.</td>
+</tr>
+<tr>
+<td align="left">sourceStart</td>
+<td align="left"></td>
+<td align="left">The offset within buf from which to begin copying.</td>
+</tr>
+<tr>
+<td align="left">sourceEnd</td>
+<td align="left"></td>
+<td align="left">The offset within buf at which to stop. copying (not inclusive).</td>
+</tr>
+</tbody></table>
+<h4 id="slice">slice</h4>
+<p>provides a new buffer that represents a slice of this one.</p>
+<pre><code>slice(size_t from, size_t to)</code></pre><table>
+<thead>
+<tr>
+<th align="left">Return Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Buffer</td>
+<td align="left">undefined</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Default</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">from</td>
+<td align="left"></td>
+<td align="left">Where the new Buffer will start. Default: 0.</td>
+</tr>
+<tr>
+<td align="left">to</td>
+<td align="left"></td>
+<td align="left">Where the new Buffer will end (not inclusive). Default: buf.length.</td>
+</tr>
+</tbody></table>
+<h3 id="properties">PROPERTIES</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Type</th>
+<th align="left">Name</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">vector<T></td>
+<td align="left">value</td>
+<td align="left">Contains a vector of the type the constructor was specialized with.</td>
+</tr>
+</tbody></table>
+<h1 id="hyperutil">Hyper::Util</h1>
+<h2 id="ctz">ctz</h2>
+<p>Counts the number of trailing zeros of a binary number.</p>
+<pre><code>ctz(size_t v)</code></pre><table>
+<thead>
+<tr>
+<th align="left">Return Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">size_t</td>
+<td align="left">Returns the number of trailing zeros.</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Default</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">v</td>
+<td align="left"></td>
+<td align="left">The binary number to analyze.</td>
+</tr>
+</tbody></table>
+
+<h1 id="hypercorememory">Hyper::Core::Memory</h1>
+<h2 id="page">Page</h2>
+<p>Contains a buffer of a fixed size.</p>
+<h3 id="constructors">CONSTRUCTORS</h3>
+<p>constructs a new instance of the page class.</p>
+<pre><code>Page(int i, Buffer&lt;uint8_t&gt; Buf)</code></pre><table>
+<thead>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Default</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">i</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">Buf</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<h3 id="properties">PROPERTIES</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Type</th>
+<th align="left">Name</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Buffer<uint8_t></td>
+<td align="left">buffer</td>
+<td align="left">The underlying source of the page.</td>
+</tr>
+</tbody></table>
+<h2 id="pager">Pager</h2>
+<p>Access memory using small fixed sized buffers.</p>
+<h3 id="constructors-1">CONSTRUCTORS</h3>
+<p>Creates a new instance of the Pager class.</p>
+<pre><code>Pager(int pageSize, PageOptions opts = {})</code></pre><table>
+<thead>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Default</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">pageSize</td>
+<td align="left"></td>
+<td align="left">Determines how large the backing vector will be.</td>
+</tr>
+<tr>
+<td align="left">opts</td>
+<td align="left">{}</td>
+<td align="left">Contains deduplication info.</td>
+</tr>
+</tbody></table>
+
+    </div>
+  
+
 </main>
