@@ -24,6 +24,11 @@
 <li>Buffer&lt;T&gt;</li>
 <li>ctz</li>
 </ul>
+<a href="Hyper::Sodium">Hyper::Sodium</a><ul>
+<li>randomBytes</li>
+<li>base64Encode</li>
+<li>base64Decode</li>
+</ul>
 <a href="Hyper::Core::Memory">Hyper::Core::Memory</a><ul>
 <li>Page</li>
 <li>Pager</li>
@@ -138,6 +143,44 @@
 <tbody><tr>
 <td align="left">std::string</td>
 <td align="left">undefined</td>
+</tr>
+</tbody></table>
+<h4 id="tostring-1">toString</h4>
+<p>Get the value of of the buffer as a string.</p>
+<pre><code>toString(const std::string&amp; encoding, size_t start = 0, size_t end = 0)</code></pre><table>
+<thead>
+<tr>
+<th align="left">Return Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">std::string</td>
+<td align="left">undefined</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Default</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">encoding</td>
+<td align="left"></td>
+<td align="left">type.</td>
+</tr>
+<tr>
+<td align="left">start</td>
+<td align="left">0</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">end</td>
+<td align="left">0</td>
+<td align="left"></td>
 </tr>
 </tbody></table>
 <h4 id="length">length</h4>
@@ -300,6 +343,92 @@
 <td align="left">v</td>
 <td align="left"></td>
 <td align="left">The binary number to analyze.</td>
+</tr>
+</tbody></table>
+
+<h1 id="hypersodium">Hyper::Sodium</h1>
+<h2 id="randombytes">randomBytes</h2>
+<p><a href="https://libsodium.gitbook.io/doc/generating_random_data#usage">https://libsodium.gitbook.io/doc/generating_random_data#usage</a></p>
+<pre><code>randomBytes(size_t size)</code></pre><table>
+<thead>
+<tr>
+<th align="left">Return Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">std::string</td>
+<td align="left">returns std::string of random bytes.</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Default</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">size</td>
+<td align="left"></td>
+<td align="left">the total number of random bytes produced.</td>
+</tr>
+</tbody></table>
+<h2 id="base64encode">base64Encode</h2>
+<p>base64 encodes a string.</p>
+<pre><code>base64Encode(const std::string&amp; str)</code></pre><table>
+<thead>
+<tr>
+<th align="left">Return Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">std::string</td>
+<td align="left">provides the base64 encoded string.</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Default</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">str</td>
+<td align="left"></td>
+<td align="left">the string to be encoded.</td>
+</tr>
+</tbody></table>
+<h2 id="base64decode">base64Decode</h2>
+<p>decodes a base64 encoded string.</p>
+<pre><code>base64Decode(const std::string&amp; str)</code></pre><table>
+<thead>
+<tr>
+<th align="left">Return Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">std::string</td>
+<td align="left">provides the decoded string.</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Default</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">str</td>
+<td align="left"></td>
+<td align="left">the string to be decoded.</td>
 </tr>
 </tbody></table>
 
