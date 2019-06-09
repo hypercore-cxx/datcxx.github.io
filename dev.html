@@ -1,5 +1,7 @@
-<link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700|Open+Sans:400,800" rel="stylesheet">
-<link href="index.css" rel="stylesheet">
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Source+Code+Pro&display=swap" rel="stylesheet">
+  <link href="index.css" rel="stylesheet">
+</head>
 
 <header>
   <meta name="description" content="C++ DAT">
@@ -15,19 +17,32 @@
 </header>
 
 <main>
-  <h2>Contributing</h2>
-    <ul>
-      <li>All commits should make
-        <a href="https://clang.llvm.org/extra/clang-tidy/">clang-tidy</a>
-        happy.</h2></li>
-      <li>Use <a href="https://github.com/heapwolf/cxx-tap">tap</a> for
-      testing.</li>
-      <li>Use <a href="http://github.com/datcxx/hyper-docs">hyper-docs</a>
-      to generate documentation.
-      <li>For benchmarking fun use <a href="http://quick-bench.com/">this</a>.
-    </ul>
+  <h2>Contributing Guidelines</h2>
+
+  <ul>
+    <li>All commits should make
+      <a href="https://clang.llvm.org/extra/clang-tidy/">clang-tidy</a>
+      happy.</h2></li>
+    <li>Use <a href="https://github.com/heapwolf/cxx-tap">tap</a> for
+    testing.</li>
+    <li>Use <a href="http://github.com/datcxx/hyper-docs">hyper-docs</a>
+    to generate documentation.
+    <li>For benchmarking fun use <a href="http://quick-bench.com/">this</a>.
+    <li>Almost never use <b>new</b> keyword. If absolutely requied, handle with shared or unique.
+  </ul>
+
+  <h2>Signed packages</h2>
+
+  <p>Releases can be verified using the
+    <a href="https://jedisct1.github.io/minisign/">minisign</a> tool.
+  </p>
+
+  <pre><code>
+  $minisign -Vm <file> -P RWRp6fDk3xmMR66imdmX9Pc9VLcwKaGrpgW6SqW6rWMRPZ6NBiC5bD3e
+  </code></pre>
 
   <h2>Build System &amp; Package Manager</h2>
+
   <p>
     Tools that solve problems you don't have slow down your productivity.
     We created <a href="https://github.com/datcxx/build">this</a> crude and
@@ -48,6 +63,16 @@
     <li>Use a well-defined location to place dependency trees (./deps)</li>
   </ul>
 
+  <h3>Requirements</h3>
+
+  <pre><code>
+  clang++ &gt;= 8.0
+  node.js &gt;= 12
+  git &gt;= 2.0
+  </code></pre>
+
+  <h3>Usage</h3>
+
   <pre><code>
   $build -h
 
@@ -63,10 +88,20 @@
     build test                        run the test script
   </code></pre>
 
+  <h3>Dependencies</h3>
+
   <p>
     Becase dependencies are in a well known location, and each one contains a
     <b>package.json</b> file, sources and headers can be discovered and easily
     passed to the compiler.
+  </p>
+
+  <h3>Test and build commands</h3>
+
+  <p>
+    The <b>test</b> and <b>build</b> command will recursively find all
+    dependency files and flags, dedupe them and pass them to the compiler.
+    This is sufficiant and works well for all cases in this project.
   </p>
 
   <h2>Hypercore</h2>
